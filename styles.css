@@ -1,0 +1,15 @@
+.row-container {
+    display: flex;
+}
+
+div {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    flex-grow: 1;
+    height: 50px;
+}
+
+.no-border {
+    border-style: none;
+}
