@@ -18,11 +18,17 @@
                 gridContainer.appendChild(rowDiv);
                 for (let j = 0; j < 16; j++) {
                     let colDiv = document.createElement('div');
-                    let className = "row" + i + " col" + j;
+                    let className = "cell row" + i + " col" + j;
                     colDiv.setAttribute("class", className);
                     rowDiv.appendChild(colDiv);
                 }
             }
+            let cells = document.querySelectorAll(".cell");
+            cells.forEach((cell) => {
+                cell.addEventListener("mouseover", () => {
+                    cell.classList.add("class", "filled");
+                });
+            });
         </script>
     </div>
 </body>

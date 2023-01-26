@@ -2,14 +2,18 @@
     display: flex;
 }
 
+.filled {
+    background: black;
+}
 div {
     border-style: solid;
     border-color: black;
     border-width: 1px;
     flex-grow: 1;
-    height: 50px;
+    height: 60px;
 }
 
-.no-border {
+.grid-container {
     border-style: none;
+    width: 960px;
 }
