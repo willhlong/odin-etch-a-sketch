@@ -8,27 +8,46 @@
     <title>Etch-a-Sketch</title>
 </head>
 <body>
+    <button id="grid-button">Click me!</button>
     <div class="grid-container no-border">
         <script>
+            let gridSize = 16;
             let gridContainer = document.querySelector(".grid-container");
-            for (let i = 0; i < 16; i++) {
-                let rowDiv = document.createElement('div');
-                let containerClassName = "row-container";
-                rowDiv.setAttribute("class", containerClassName);
-                gridContainer.appendChild(rowDiv);
-                for (let j = 0; j < 16; j++) {
-                    let colDiv = document.createElement('div');
-                    let className = "cell row" + i + " col" + j;
-                    colDiv.setAttribute("class", className);
-                    rowDiv.appendChild(colDiv);
+            printGrid();
+            function printGrid() {
+                clearGrid();
+                for (let i = 0; i < gridSize; i++) {
+                    let rowDiv = document.createElement('div');
+                    let containerClassName = "row-container";
+                    rowDiv.setAttribute("class", containerClassName);
+                    gridContainer.appendChild(rowDiv);
+                    for (let j = 0; j < gridSize; j++) {
+                        let colDiv = document.createElement('div');
+                        let className = "cell row" + i + " col" + j;
+                        colDiv.setAttribute("class", className);
+                        rowDiv.appendChild(colDiv);
+                    }
                 }
-            }
-            let cells = document.querySelectorAll(".cell");
-            cells.forEach((cell) => {
+                let cells = document.querySelectorAll(".cell");
+                cells.forEach((cell) => {
                 cell.addEventListener("mouseover", () => {
                     cell.classList.add("class", "filled");
                 });
-            });
+            });                
+            }
+            function clearGrid() {
+                document.querySelector(".grid-container").replaceChildren();
+            }
+            document.getElementById('grid-button').addEventListener('click', () => {
+                let response = prompt("Please enter a value for the desired grid size (max 100)...");
+                if (response > 100 || response < 0) {
+                    alert("Invalid response...");
+                }
+                else {
+                    gridSize = response;
+                    printGrid();
+                }
+            });       
         </script>
     </div>
 </body>
